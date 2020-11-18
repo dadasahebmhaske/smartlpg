@@ -1,0 +1,280 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <article class="col-sm-12">
+        <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true"
+          minimize="false" color="blueDark">
+          <header class="text-center">
+            <h2>
+              <i class="fa fa-database"></i> Weekly Payout</h2>
+          </header>
+          <div>
+            <div class="widget-body">
+              <div class="row" >
+                <div class="col-sm-6" *ngIf="project.TranNo!=null" style="font-size:14px;margin-top: 11px;">
+                  <label style="margin-right:20px;"><strong>Trans No. : <span class="text-primary">{{project.DispTranNo}}</span></strong></label>
+                  <label><strong>Trans Date : <span class="text-primary">{{project.TranDate}}</span></strong></label>
+                  </div>
+              <div class="col-sm-6 pull-right" *ngIf="TranExists.length>0">
+                <button type="button" class="btn btn-danger pull-right btn-lg" data-toggle="modal" data-target="#TransactionModal">Access Denied, Next Transaction Exists </button>
+               
+              </div>
+            </div>
+              <form name="transportForm" #transportForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off"
+                ngNativeValidate>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="sel1">Site <span class="errorMessage">*</span>
+                          </label>
+                          <select class="form-control" [(ngModel)]="project.SiteId" name="SiteId" (change)="onSelectSite(project.SiteId)"
+                            [disabled]="project.TranNo!=null" required>
+                            <option value="" selected hidden> Select Site </option>
+                            <option [value]="des.SiteId" *ngFor="let des of SiteData">{{des.SiteName}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="sel1">Project <span class="errorMessage">*</span>
+                          </label>
+                          <select class="form-control" [(ngModel)]="project.ProjectId" name="ProjectId"
+                            (change)="onSelectProject('')" [disabled]="project.TranNo!=null" required>
+                            <option value="" selected hidden> Select Project </option>
+                            <option [value]="des.ProjectId" *ngFor="let des of ProjectData">{{des.ProjectName}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                            <label for="sel1">Select  Labour Work Payment<span class="errorMessage">*</span>
+                            </label>
+                            <select class="form-control" [(ngModel)]="project.RefTranNo" name="RefTranNo"
+                              (change)="onSelectProject(project.RefTranNo)" [disabled]="project.TranNo!=null" required>
+                              <option value="" selected hidden> Select Labour Work Payment</option>
+                              <option [value]="des.TranNo" *ngFor="let des of WorkLabourD">{{des.DispTranNo}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+
+                  <!-- <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>Start Date <span class="errorMessage">*</span>
+                      </label>
+                      <input type="text" class="form-control" placeholder="Enter Start Date "
+                        [(ngModel)]="transport.PayDate" name="PayDate" saCommonDir dirType="alphanumeric" required />
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>End Date <span class="errorMessage">*</span>
+                      </label>
+                      <input type="text" class="form-control" placeholder="Enter End Date "
+                        [(ngModel)]="transport.PayDate" name="PayDate" saCommonDir dirType="alphanumeric" required />
+                    </div>
+                  </div>
+                  <div class="col-sm-1 col-xs-4">
+                    <div class="form-group">
+                      <label>
+                      </label>
+                      <button class="btn btn-block btn-success get_details" type="submit" [disabled]="!loaderbtn">
+                        <i class="fa fa-fw" [ngClass]="{'fa-search':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i>
+                        {{loaderbtn==true? 'Get Details':'Loading'}}</button>
+                    </div>
+                  </div> -->
+                  <div class="col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                              <tr align="center" class="text-center">
+                                <th class="text-center">#</th>
+                                <th>Labour Name</th>
+                                <th>Activity Type </th>
+                                <th>Ativity </th>
+                                <th>Work Description </th>
+                                <th class="text-center">Start Date</th>
+                                <th class="text-center">In Time</th>
+                                <th class="text-center">End Date</th>                               
+                                <th class="text-center">Out Time</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-center">Unit</th>
+                                <th class="text-center">Rate</th>
+                                <th class="text-center">Amount</th>                                
+                                <th class="text-center">Action</th>
+                              </tr>
+    
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let mat of MaterialArray;index as i">
+                                <td class="text-center"><span (onload)="check(i)">{{i+1}}.</span></td>
+                                <td><strong>{{mat.LabourName}}</strong></td>
+                                <td ><span *ngIf="mat.show">{{mat.TypeName}}</span></td>  
+                                <td>{{mat.WorkName}}</td>
+                                <td >{{mat.WorkDescription}}</td>
+                                <td class="text-center">{{mat.StartDate}}</td>
+                                <td class="text-center">{{mat.DispStartTime}}</td>
+                                <td class="text-center">{{mat.EndDate}}</td>
+                                <td class="text-center">{{mat.DispEndTime}}</td>
+                                <td class="text-center">{{mat.Qty}}</td>
+                                <td class="text-center">{{mat.UOM}}</td>
+                                <td class="text-center">{{mat.Rate}}</td>
+                                <td class="text-center">{{mat.TotalAmount}}</td>
+                               
+                                <td class="text-center">
+                                    <a class="btn btn-xs btn-danger action-btn" (click)=onRemoveMaterial(mat,i)>Remove</a>
+                                    </td>
+                              </tr>
+    
+    
+                            </tbody>
+                          </table>
+                    </div>
+                    <!-- <div class="form-group  pull-right">
+                      <button class="btn btn-block btn-warning ">
+                          <i class="glyphicon glyphicon-plus"></i>
+                          Add For Weekly Payout
+                      </button>
+                  </div> -->
+                  </div>
+                  <!-- <div class="col-sm-6">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr align="center" class="text-center">
+                            <th class="text-center">#</th>
+                            <th class="text-center">Labour</th>
+                            <th class="text-center">Start Date</th>
+                            <th class="text-center">End Date</th>
+                            <th class="text-center">Days</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Remove</th>
+                          </tr>
+
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td >Amir Fakri</td>
+                            <td class="text-center">1/Sep/2020</td>
+                            <td class="text-center">5/Sep/2020</td>
+                            <td class="text-center">5</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">
+                              <button class="btn btn-xs btn-danger" (click)=onRemoveDoc(docs,i+1)>Remove</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td >Salman Khan</td>
+                            <td class="text-center">1/Sep/2020</td>
+                            <td class="text-center">5/Sep/2020</td>
+                            <td class="text-center">5</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">
+                              <button class="btn btn-xs btn-danger" (click)=onRemoveDoc(docs,i+1)>Remove</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td >Honey Singh</td>
+                            <td class="text-center">1/Sep/2020</td>
+                            <td class="text-center">5/Sep/2020</td>
+                            <td class="text-center">5</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">
+                              <button class="btn btn-xs btn-danger" (click)=onRemoveDoc(docs,i+1)>Remove</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"  class="text-center"><strong>Total</strong></td>
+                            <td class="text-center"><strong>1/Sep/2020</strong></td>
+                            <td class="text-center"><strong>5/Sep/2020</strong></td>
+                            <td class="text-center"><strong>15</strong></td>
+                            <td class="text-center"><strong>7500</strong></td><td></td>
+                          </tr>
+                       
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div> -->
+                </div>
+
+                <footer>
+                  <div class="row">
+                    <div class="col-sm-12 ">
+                      <hr />
+                      <a class="pull-right btn btn-default" routerLink="/project/weekly-payout-list">
+                        <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
+                      <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn || MaterialArray.length==0" *ngIf="TranExists.length==0">
+                        <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i>
+                        {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                    </div>
+                  </div>
+                </footer> 
+              </form>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+<!-- Modal -->
+<div class=" modal fade" id="TransactionModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Transaction Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+          <div class="refill">
+              <div class="row">
+                         <div class="col-sm-12">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Transaction No.</th>
+                          <th>Transaction Date</th>
+                          <th>Transaction Name</th>
+                          <th>Created By</th>
+                          <th>Updated By</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pr of TranExists;index as i">
+                          <td>{{i+1}}</td>
+                          <td>{{pr.DispTranNo}}</td>
+                          <td>{{pr.TranDate}}</td>
+                          <td>{{pr.TranShortName}}</td>
+                         <td >{{pr.CreatedByName}}</td>
+                          <td >{{pr.UpdatedByName}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+       <!-- <button type="button" *ngIf="stock.IsDispatch == 'Y' && stock.OrderStage!='CA' && stock.OrderStage!='RJ'" (click)="DispatchOrder('AC')" class="btn btn-success">Accept</button>
+        <button type="button" *ngIf="stock.IsDispatch == 'Y' && stock.OrderStage!='CA' && stock.OrderStage!='RJ'" (click)="DispatchOrder('RJ')" class="btn btn-danger">Reject</button> -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
