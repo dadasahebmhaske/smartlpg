@@ -35,7 +35,7 @@ export const config: any = {
 
     {
       name: "smart-style-2",
-      logo: "assets/img/cost.jpg",
+      logo: "assets/img/smartpg.png",
       skinBtnClass: "btn btn-xs btn-block txt-color-darken margin-top-5",
       style: {
         background: 'red'
