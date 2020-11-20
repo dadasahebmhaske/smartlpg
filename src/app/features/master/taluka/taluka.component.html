@@ -10,13 +10,13 @@
                   </header>
                   <div>
                       <div class="widget-body">
-                          <form name="talukaForm" #talukaForm="ngForm"  ngNativeValidate>
+                            <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
                               <div class="row">
                                 <div class="col-sm-6">
                                   <div class="form-group">
                                       <label>Taluka <span class="errorMessage">*</span>
                                       </label>
-                                      <input type="text" class="form-control" placeholder="Enter Taluka Name "saCommonDir
+                                      <input type="text" class="form-control"  [(ngModel)]="item.Name" name="TalukaName" placeholder="Enter Taluka Name "saCommonDir
                                           dirType="alphanumeric" required />
                                   </div>
                               </div>
