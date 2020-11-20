@@ -1,0 +1,162 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <sa-widgets-grid>
+      <div class="row">
+          <article class="col-sm-8 col-sm-offset-2">
+              <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
+                  <header class="text-center">
+                      <h2>
+                          <i class="fa fa-database"></i> Admin Charges Master</h2>
+                  </header>
+                  <div>
+                      <div class="widget-body">
+                          <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
+                            <div class="row">
+                            <div class="col-sm-12">
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label for="sel1">Name <span class="errorMessage">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter Name"
+                                    [(ngModel)]="adm.Name" name="Name" saCommonDir dirType="alphaonly" required />
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label>Account<span class="errorMessage" style="color:red;">*</span></label>
+                                    <select class="form-control" [(ngModel)]="adm.empty" name="empty" required>
+                                      <option value="" selected hidden> Select Account </option>
+                                      <option value="">Inspection Charges</option>
+                                    </select>
+                              
+                                  </div>
+                                </div>
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label for="sel1">Amount <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter Amount"
+                                      [(ngModel)]="adm.amount" name="amount" saCommonDir dirType="number"
+                                      required />
+                                  </div>
+                                </div>
+                              
+                              </div>
+
+
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label for="sel1">IGST % <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter IGST"
+                                      [(ngModel)]="adm.igst" name="igst" required />
+                                  </div>
+                                </div>
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label for="sel1">CGST % <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter CGST"
+                                      [(ngModel)]="adm.cgst" name="cgst" saCommonDir dirType="number"
+                                      required />
+                                  </div>
+                                </div>
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label for="sel1">SGST % <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter SGST"
+                                      [(ngModel)]="adm.sgst" name="sgst" saCommonDir dirType="number"
+                                      required />
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row">
+                               
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label for="sel1">HSN/ACS <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter HSN/ACS"
+                                      [(ngModel)]="adm.acs" name="acs" saCommonDir dirType="number"
+                                      required />
+                                  </div>
+                                </div>
+
+                                    <div class="col-sm-8">
+                                      <div class="form-group">
+                                        <label for="sel1">Item <span class="errorMessage">*</span>
+                                        </label>
+                                        <select class="form-control" [(ngModel)]="adm.godow" name="godow" required>
+                                          <option value="" selected hidden> Select Item </option>
+                                          <option value="">Godown</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                              </div>
+
+                      
+
+                              <!-- <div class="row">
+
+                                  <div class="col-sm-2">
+                                      <div class="form-group">
+                                      <label class="chekbox-margin" style="margin-top:30px;">
+                                          <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="Billwise" [(ngModel)]='account.Billwise' /> Billwise? </label>
+                                         </div>
+                                  </div>
+                                  <div class="col-sm-2">
+                                      <div class="form-group">
+                                      <label class="chekbox-margin" style="margin-top:30px;">
+                                          <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="State" [(ngModel)]='account.State' /> In State? </label>
+                                 </div>
+                                      </div>
+                                  
+                               
+
+
+                                 
+
+
+                              </div>  -->
+
+                          
+                            </div>
+
+                            
+
+                              <footer>
+                                  <div class="row">
+                                      <div class="col-sm-12 ">
+                                          <hr />
+                                          <a class="pull-right btn btn-default" routerLink="/master/admin-charges-master">
+                                              <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
+                                          <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
+                                              <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                                      </div>
+                                  </div>
+                              </footer>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+
+
+
+
+
+
+
+

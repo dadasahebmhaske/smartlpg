@@ -1,0 +1,73 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <sa-widgets-grid>
+      <div class="row">
+          <article class="col-sm-8 col-sm-offset-2">
+              <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
+                  <header class="text-center">
+                      <h2>
+                          <i class="fa fa-database"></i> Closing Stock Master</h2>
+                  </header>
+                  <div>
+                      <div class="widget-body">
+                          <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
+                            <div class="row">
+                            <div class="col-sm-8">
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <label> Date<span class="errorMessage" style="color:red;">*</span></label>
+                                    <label class="posticon">
+                                      <i class="icon-append fa fa-calendar"></i>
+                                      <input type="text" class="form-control" placeholder="Select Date" [(ngModel)]="Cstock.StartDate" name="StartDate"
+                                        autocomplete="off" onkeydown="return false" style="font-weight: normal;"
+                                        [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}"
+                                        bsDatepicker required />
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <label for="sel1">Amount <span class="errorMessage">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter Amount"
+                                    [(ngModel)]="Cstock.code" name="code" saCommonDir dirType="alphaonly" required />
+                                  </div>
+                                </div>
+                              </div>
+                            
+
+                            </div>
+
+                        
+
+                              <footer>
+                                  <div class="row">
+                                      <div class="col-sm-12 ">
+                                          <hr />
+                                          <a class="pull-right btn btn-default" routerLink="/master/closing-stock-master">
+                                              <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
+                                          <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
+                                              <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                                      </div>
+                                  </div>
+                              </footer>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+
+
+
+
+
+
+
+

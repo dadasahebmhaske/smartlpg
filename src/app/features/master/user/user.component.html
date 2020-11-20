@@ -1,0 +1,110 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <sa-widgets-grid>
+      <div class="row">
+          <article class="col-sm-8 col-sm-offset-2">
+              <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
+                  <header class="text-center">
+                      <h2>
+                          <i class="fa fa-database"></i> User Master</h2>
+                  </header>
+                  <div>
+                      <div class="widget-body">
+                          <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
+                            <div class="row">
+                            <div class="col-sm-12">
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                      <label>First Name<span class="errorMessage" style="color:red;">*</span></label>
+                                      <input type="text" class="form-control" placeholder="First Name" [(ngModel)]='user.mfname' name="mfname" saCommonDir dirType="alphaonly" autocomplete="off" required>
+                                  </div>
+                              </div>
+      
+                              <div class="col-sm-4">
+                                  <div class="form-group">
+                                      <label>Last Name<span class="errorMessage" style="color:red;">*</span></label>
+                                      <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]='user.mlname' name="mlname" saCommonDir dirType="alphaonly" autocomplete="off" required>
+                                  </div>
+                              </div>
+                              <div class="col-sm-4">
+                                  <div class="form-group">
+                                      <label>Mobile No.<span class="errorMessage" style="color:red;">*</span></label> 
+                                      <input type="text" class="form-control" minlength="10" maxlength="10" placeholder="Mobile No." [(ngModel)]='user.mobileno' name="mobileno" pattern="^[6-9]\d{9}$" oninvalid="setCustomValidity('Invalid Mobile No.')"
+                                             oninput="setCustomValidity('')" saCommonDir dirType="number" autocomplete="off" required>
+                                  </div>
+                              </div>
+                          
+                              <div class="col-sm-4">
+                                  <div class="form-group">
+                                      <label>Email Address<span class="errorMessage" style="color:red;">*</span></label>
+                                      <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]='user.emailadd' name="emailadd" autocomplete="off" required>
+                                  </div>
+                              </div>
+                              <div class="col-sm-4">
+                                  <div class="form-group">
+                                      <label>New Password<span class="errorMessage" style="color:red;">*</span></label>
+                                      <input type="{{inputTypeOne}}" class="form-control" placeholder="Password"
+                                          [(ngModel)]="user.emailpwd" name="emailpwd" minlength="6" maxlength="16" autocomplete="off"
+                                          required />
+                                      <span class="showPass glyphicon {{classNameOne}} form-control-feedback " (click)="HideShowPasswordOne()"
+                                          style="cursor: pointer; pointer-events: all;">
+                                      </span>
+                              
+                                  </div>
+                              </div>
+                              <div class="col-sm-4">
+                                  <div class="form-group">
+                                      <label>Re-type Password<span class="errorMessage" style="color:red;">*</span></label>
+                                      <input type="{{inputTypeTwo}}" class="form-control" placeholder="Retype Password"
+                                          [(ngModel)]="user.confirmpwd" name="confirmpwd" minlength="6" maxlength="16"
+                                          autocomplete="off" required (change)="checkPass()" />
+                              
+                                      <span class="showPass glyphicon {{classNameTwo}} form-control-feedback " (click)="HideShowPasswordTwo()"
+                                          style="cursor: pointer; pointer-events: all;">
+                                      </span>
+                                  </div>
+                                  
+                              </div>
+
+
+
+                              </div>
+                             
+                            
+
+                            </div>
+
+                        
+
+                              <footer>
+                                  <div class="row">
+                                      <div class="col-sm-12 ">
+                                          <hr />
+                                          <a class="pull-right btn btn-default" routerLink="/master/user-master">
+                                              <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
+                                          <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
+                                              <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                                      </div>
+                                  </div>
+                              </footer>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+
+
+
+
+
+
+
+

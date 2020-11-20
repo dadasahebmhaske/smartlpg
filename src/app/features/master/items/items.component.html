@@ -1,0 +1,220 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <sa-widgets-grid>
+      <div class="row">
+          <article class="col-sm-8 col-sm-offset-2">
+              <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
+                  <header class="text-center">
+                      <h2>
+                          <i class="fa fa-database"></i> Items Master</h2>
+                  </header>
+                  <div>
+                      <div class="widget-body">
+                          <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
+                            <div class="row">
+                            <div class="col-sm-12">
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <label for="sel1">Item Name <span class="errorMessage">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Enter Account Name"
+                                    [(ngModel)]="item.Name" name="Name" saCommonDir dirType="alphaonly" required />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <div class="form-group">
+                                    <label>Category<span class="errorMessage" style="color:red;">*</span></label>
+                                    <select class="cleanSelect form-control" id="lng" [(ngModel)]="item.Category" name="categId"
+                                      (change)="GetRptTo(User.RoleId)" required>
+                                      <option value="">--Select Category--</option>
+                                      <option *ngFor="let State of StateData" value="{{State.RoleId}}">{{State.RoleDesc}}</option>
+                                    </select>
+                              
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  <div class="form-group">
+                                    <label class="chekbox-margin" style="margin-top:30px;">
+                                      <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="serviceitem"
+                                        [(ngModel)]='item.serviceitem' /> Service Item? </label>
+                                  </div>
+                                </div>
+                              
+                              </div>
+
+                              <div class="row">
+                                  <div class="col-sm-2">
+                                      <div class="form-group">
+                                        <label for="sel1">Purchase Rate <span class="errorMessage">*</span>
+                                        </label>
+                                        <input type="textarea" class="form-control" placeholder="Enter Rate"
+                                          [(ngModel)]="item.Rate" name="Rate" required />
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                      <div class="form-group">
+                                        <label for="sel1">Sale Rate <span class="errorMessage">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Enter Rate"
+                                          [(ngModel)]="item.srate" name="srate" saCommonDir dirType="number"
+                                          required />
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                      <div class="form-group">
+                                        <label for="sel1">HSN <span class="errorMessage">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Enter GST No."
+                                          [(ngModel)]="item.hsn" name="hsn" saCommonDir dirType="number"
+                                          required />
+                                      </div>
+                                    </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-sm-2">
+                                  <div class="form-group">
+                                    <label for="sel1">IGST % <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter Rate"
+                                      [(ngModel)]="item.igst" name="igst" required />
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  <div class="form-group">
+                                    <label for="sel1">CGST % <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter Rate"
+                                      [(ngModel)]="item.cgst" name="cgst" saCommonDir dirType="number"
+                                      required />
+                                  </div>
+                                </div>
+                                <div class="col-sm-2">
+                                  <div class="form-group">
+                                    <label for="sel1">SGST % <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter GST No."
+                                      [(ngModel)]="item.sgst" name="sgst" saCommonDir dirType="number"
+                                      required />
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row">
+                                  <div class="col-sm-2">
+                                      <div class="form-group">
+                                        <label for="sel1">Empty Item <span class="errorMessage">*</span>
+                                        </label>
+                                        <select class="form-control" [(ngModel)]="item.empty" name="empty" required>
+                                          <option value="" selected hidden> Select Item </option>
+                                          <option value="">14.2 Empty Cyl</option>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                      <div class="form-group">
+                                        <label for="sel1">Godown <span class="errorMessage">*</span>
+                                        </label>
+                                        <select class="form-control" [(ngModel)]="item.godow" name="godow" required>
+                                          <option value="" selected hidden> Select Godown </option>
+                                          <option value="">Godown</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-sm-2">
+                                  <div class="form-group">
+                                      <label>Cylinder Code</label>
+                                      <input type="text" class="form-control" placeholder="Enter Code" [(ngModel)]="item.cycode"
+                                          name="cycode" minlength="6" maxlength="6" />
+                                    </div>
+                                   </div>
+                                    <div class="col-sm-2">
+                                      <div class="form-group">
+                                          <label>Delivery Rate</label>
+                                          <input type="text" class="form-control" placeholder="Enter Rate" [(ngModel)]="item.Drate"
+                                              name="Drate" minlength="6" maxlength="6" />
+                                      </div>
+                                  </div>
+
+                              </div>
+
+                              <!-- <div class="row">
+
+                                  <div class="col-sm-2">
+                                      <div class="form-group">
+                                      <label class="chekbox-margin" style="margin-top:30px;">
+                                          <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="Billwise" [(ngModel)]='account.Billwise' /> Billwise? </label>
+                                         </div>
+                                  </div>
+                                  <div class="col-sm-2">
+                                      <div class="form-group">
+                                      <label class="chekbox-margin" style="margin-top:30px;">
+                                          <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="State" [(ngModel)]='account.State' /> In State? </label>
+                                 </div>
+                                      </div>
+                                  
+                               
+
+
+                                 
+
+
+                              </div>  -->
+
+                          
+                            </div>
+
+                            <div class="col-sm-offset-2 col-sm-4">
+                              <div class="col-sm-6">
+                                  <label >Item Logo<span class="errorMessage" style="color:red;">*</span></label>
+                                  <div class="product_master_img">
+                                      <img src="{{filepreview}}" style="height: 160px; width: 160px;" />
+                                     
+                                     
+                                  </div>
+                                  <div class="new_prof_label1" style="margin-top: 13px;">
+                                      <!-- value="{{imagename}}" -->
+                                      <input type="file" name="file" name="Data"  (change)="onFileSelected($event)"   required>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+
+                              <footer>
+                                  <div class="row">
+                                      <div class="col-sm-12 ">
+                                          <hr />
+                                          <a class="pull-right btn btn-default" routerLink="/master/account-master">
+                                              <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
+                                          <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
+                                              <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                                      </div>
+                                  </div>
+                              </footer>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+
+
+
+
+
+
+
+

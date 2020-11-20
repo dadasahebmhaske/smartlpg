@@ -1,0 +1,242 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <article class="col-sm-10 col-sm-offset-1">
+                <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
+                    <header class="text-center">
+                        <h2>
+                            <i class="fa fa-database"></i> Account Master</h2>
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label for="sel1">Account Name <span class="errorMessage">*</span>
+                                      </label>
+                                      <!-- <select class="form-control" [(ngModel)]="account.DeptId" name="DeptId" required>
+                                        <option value="" selected hidden> Select Department </option>
+                                        <option [value]="des.DeptId" *ngFor="let des of DeptData">{{des.DeptName}}
+                                        </option>
+                                      </select> -->
+                                      <input type="text" class="form-control" placeholder="Enter Account Name"
+                                      [(ngModel)]="account.Name" name="Name" saCommonDir dirType="alphaonly"
+                                      required />
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group">
+                                      <label for="sel1">Group <span class="errorMessage">*</span>
+                                      </label>
+                                      <select class="form-control" [(ngModel)]="account.DesigId" name="DesigId" required>
+                                        <option value="" selected hidden> Select Group </option>
+                                        <option [value]="des.DesigId" *ngFor="let des of designationData">{{des.DesigName}}
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-2">
+                                    <div class="form-group">
+                                      <label for="sel1">Opening <span class="errorMessage">*</span>
+                                      </label>
+                                      <input type="text" class="form-control" placeholder="Enter Opening"
+                                        [(ngModel)]="account.FirstName" name="FirstName" saCommonDir dirType="number"
+                                        required />
+                                    </div>
+                                  </div>
+                                 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                          <label for="sel1">Address <span class="errorMessage">*</span>
+                                          </label>
+                                          <input type="textarea" class="form-control" placeholder="Enter Address"
+                                            [(ngModel)]="account.FirstName" name="FirstName" required />
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <div class="form-group">
+                                          <label for="sel1">PAN <span class="errorMessage">*</span>
+                                          </label>
+                                          <input type="text" class="form-control" placeholder="Enter PAN"
+                                            [(ngModel)]="account.PAN" name="PAN" saCommonDir dirType="number"
+                                            required />
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <div class="form-group">
+                                          <label for="sel1">GST No. <span class="errorMessage">*</span>
+                                          </label>
+                                          <input type="text" class="form-control" placeholder="Enter GST No."
+                                            [(ngModel)]="account.Gst" name="Gst" saCommonDir dirType="number"
+                                            required />
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <div class="form-group">
+                                          <label for="sel1">GST Type <span class="errorMessage">*</span>
+                                          </label>
+                                          <select class="form-control" [(ngModel)]="account.Gsttype" name="Gsttype" required>
+                                            <option value="" selected hidden> Select GST Type </option>
+                                            <option value="">Regular</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                          <label for="sel1">Mobile No. <span class="errorMessage">*</span>
+                                          </label>
+                                          <input type="text" class="form-control" placeholder="Enter Mobile No."
+                                            [(ngModel)]="account.MobileNo" name="MobileNo" minlength="10" maxlength="10"
+                                            saCommonDir dirType="number" required />
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-4">
+                                        <div class="form-group">
+                                          <label for="sel1">Email ID <span class="errorMessage">*</span>
+                                          </label>
+                                          <input type="text" class="form-control" placeholder="Enter Email ID "
+                                            [(ngModel)]="account.EmailId" #EmailId="ngModel" name="EmailId"
+                                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required />
+                                        </div>
+                                      </div>
+
+                                      <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Sort Order</label>
+                                            <input type="text" class="form-control" placeholder="Enter Sort Order" [(ngModel)]="account.order"
+                                                name="Order" minlength="6" maxlength="6" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+          
+                                          <label>GST Reg. Date<span class="errorMessage" style="color:red;">*</span></label>
+                                          <label class="posticon">
+                                            <i class="icon-append fa fa-calendar"></i>
+                                           <input type="text" class="form-control" placeholder="Select Date" [(ngModel)]="account.StartDate" 
+                                           name="StartDate"  autocomplete="off" onkeydown="return false"
+                                            style="font-weight: normal;"
+                                            [bsConfig]="{containerClass: 'theme-dark-blue',minDate:0,maxDate:maxdate,showWeekNumbers:false,dateInputFormat:'DD-MMM-YYYY'}" 
+                                           
+                                            bsDatepicker  required />
+                                          </label>
+          
+                                        </div> 
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Account Code</label>
+                                        <input type="text" class="form-control" placeholder="Enter Code" [(ngModel)]="account.code"
+                                            name="code" minlength="6" maxlength="6" />
+                                    </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input type="text" class="form-control" placeholder="Enter City" [(ngModel)]="account.city"
+                                                name="city" minlength="6" maxlength="6" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>State<span class="errorMessage" style="color:red;">*</span></label>
+                                            <select class="cleanSelect form-control" id="lng" [(ngModel)]="account.StateId" name="StateId"
+                                                (change)="GetRptTo(User.RoleId)" required>
+                                                <option value="">--Select State--</option>
+                                                <option *ngFor="let State of StateData" value="{{State.RoleId}}">{{State.RoleDesc}}</option>
+                                            </select>
+                                
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Customer Category<span class="errorMessage" style="color:red;">*</span></label>
+                                            <select class="cleanSelect form-control" id="lng" [(ngModel)]="account.custId" name="custId"
+                                                (change)="GetRptTo(User.RoleId)" required>
+                                                <option value="">--Select Category--</option>
+                                                <option *ngFor="let State of StateData" value="{{State.RoleId}}">{{State.RoleDesc}}</option>
+                                            </select>
+                                
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Agent<span class="errorMessage" style="color:red;">*</span></label>
+                                            <select class="cleanSelect form-control" id="lng" [(ngModel)]="account.agent" name="agentId"
+                                                (change)="GetRptTo(User.RoleId)" required>
+                                                <option value="">--Select Agent--</option>
+                                                <option *ngFor="let State of StateData" value="{{State.RoleId}}">{{State.RoleDesc}}</option>
+                                            </select>
+                                
+                                        </div>
+                                    </div>
+
+                                  
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                        <label class="chekbox-margin" style="margin-top:30px;">
+                                            <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="Billwise" [(ngModel)]='account.Billwise' /> Billwise? </label>
+                                           </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                        <label class="chekbox-margin" style="margin-top:30px;">
+                                            <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="State" [(ngModel)]='account.State' /> In State? </label>
+                                   </div>
+                                        </div>
+                                    
+                                 
+
+
+                                   
+
+
+                                </div> 
+
+                            
+                                <footer>
+                                    <div class="row">
+                                        <div class="col-sm-12 ">
+                                            <hr />
+                                            <a class="pull-right btn btn-default" routerLink="/master/account-master">
+                                                <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
+                                            <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
+                                                <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </sa-widgets-grid>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
