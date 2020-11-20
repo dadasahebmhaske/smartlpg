@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TalukaComponent implements OnInit {
   public loaderbtn: boolean = true;
+  public item: any ={};
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit(){}
 }

@@ -2,7 +2,7 @@
 <div id="content">
   <sa-widgets-grid>
       <div class="row">
-          <article class="col-sm-8 col-sm-offset-2">
+          <article class="col-sm-12">
               <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
                   <header class="text-center">
                       <h2>
@@ -12,7 +12,7 @@
                       <div class="widget-body">
                           <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
                             <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-9">
                               <div class="row">
                                 <div class="col-sm-6">
                                   <div class="form-group">
@@ -21,8 +21,7 @@
                                     [(ngModel)]="item.Name" name="Name" saCommonDir dirType="alphaonly" required />
                                   </div>
                                 </div>
-                              </div>
-                              <div class="row">
+                            
                                 <div class="col-sm-4">
                                   <div class="form-group">
                                     <label>Category<span class="errorMessage" style="color:red;">*</span></label>
@@ -41,10 +40,7 @@
                                         [(ngModel)]='item.serviceitem' /> Service Item? </label>
                                   </div>
                                 </div>
-                              
-                              </div>
-
-                              <div class="row">
+                             
                                   <div class="col-sm-2">
                                       <div class="form-group">
                                         <label for="sel1">Purchase Rate <span class="errorMessage">*</span>
@@ -71,9 +67,7 @@
                                           required />
                                       </div>
                                     </div>
-                              </div>
-
-                              <div class="row">
+                             
                                 <div class="col-sm-2">
                                   <div class="form-group">
                                     <label for="sel1">IGST % <span class="errorMessage">*</span>
@@ -100,10 +94,7 @@
                                       required />
                                   </div>
                                 </div>
-                              </div>
-
-
-                              <div class="row">
+                         
                                   <div class="col-sm-2">
                                       <div class="form-group">
                                         <label for="sel1">Empty Item <span class="errorMessage">*</span>
@@ -125,9 +116,7 @@
                                         </select>
                                       </div>
                                     </div>
-                              </div>
-
-                              <div class="row">
+                            
                                 <div class="col-sm-2">
                                   <div class="form-group">
                                       <label>Cylinder Code</label>
@@ -145,34 +134,10 @@
 
                               </div>
 
-                              <!-- <div class="row">
-
-                                  <div class="col-sm-2">
-                                      <div class="form-group">
-                                      <label class="chekbox-margin" style="margin-top:30px;">
-                                          <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="Billwise" [(ngModel)]='account.Billwise' /> Billwise? </label>
-                                         </div>
-                                  </div>
-                                  <div class="col-sm-2">
-                                      <div class="form-group">
-                                      <label class="chekbox-margin" style="margin-top:30px;">
-                                          <input type="checkbox" trueFalseValue trueValue="Y" falseValue="N" name="State" [(ngModel)]='account.State' /> In State? </label>
-                                 </div>
-                                      </div>
-                                  
-                               
-
-
-                                 
-
-
-                              </div>  -->
-
                           
                             </div>
 
-                            <div class="col-sm-offset-2 col-sm-4">
-                              <div class="col-sm-6">
+                              <div class="col-sm-3">
                                   <label >Item Logo<span class="errorMessage" style="color:red;">*</span></label>
                                   <div class="product_master_img">
                                       <img src="{{filepreview}}" style="height: 160px; width: 160px;" />
@@ -185,8 +150,8 @@
                                   </div>
                                   
                               </div>
-                          </div>
-
+                          
+                        </div>
                               <footer>
                                   <div class="row">
                                       <div class="col-sm-12 ">
@@ -198,7 +163,7 @@
                                       </div>
                                   </div>
                               </footer>
-                            </div>
+                         
                           </form>
                       </div>
                   </div>
