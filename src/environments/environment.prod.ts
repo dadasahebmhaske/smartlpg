@@ -14,11 +14,8 @@ export const environment = {
     api: null,
     db: 'smartadmin-angular'
   },
- 
-  BaseUrl: 'http://cms.pushpamgroup.co.in/api/api/',
-  authKey: 'CMSYS:CMSYS@12345?',
-  secureKey: 'CMSYS11223344556',
-  deptId: 1006
+
+
 
 
 };
