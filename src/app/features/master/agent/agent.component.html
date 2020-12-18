@@ -16,7 +16,8 @@
                                       <div class="form-group">
                                           <label>Agent Name <span class="errorMessage">*</span>
                                           </label>
-                                          <input type="text" class="form-control" placeholder="Enter Agent Name" required />
+                                          <input type="text" class="form-control" placeholder="Enter Agent Name "  saCommonDir
+                                              dirType="alphaonly" required />
                                       </div>
                                   </div>
                               </div>
@@ -26,8 +27,8 @@
                                           <hr />
                                           <a class="pull-right btn btn-default" routerLink="/master/agent-master">
                                               <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
-                                          <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
-                                              <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
+                                              <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
+                                                <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>
                                       </div>
                                   </div>
                               </footer>

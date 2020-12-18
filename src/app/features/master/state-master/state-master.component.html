@@ -1,0 +1,43 @@
+<!-- MAIN CONTENT -->
+<div id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <article class="col-sm-12">
+        <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
+          <header class="text-center">
+            <h2>
+              <i class="fa fa-database"></i> State Master</h2>
+          </header>
+          <div>
+            <div class="widget-body">
+              <div class="row ">
+                  <form name="stateForm" #stateForm="ngForm" autocomplete="off" ngNativeValidate>
+                </form>
+                <div class="col-sm-12 ">
+                <div class="form-group  pull-right">
+                  <a routerLink="/master/state" class="btn btn-block btn-warning get_details pull-right">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Add State
+                  </a>
+                </div>
+              </div>
+                <div class="col-sm-12  table-responsive">
+                    <ui-grid ></ui-grid>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </article>
+    </div>
+
+
+  </sa-widgets-grid>
+</div>
+
+
+

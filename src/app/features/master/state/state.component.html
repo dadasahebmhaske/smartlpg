@@ -6,36 +6,46 @@
               <div sa-widget [editbutton]="false" [sortable]="false" [deletebutton]="false" [togglebutton]="true" minimize="false" color="blueDark">
                   <header class="text-center">
                       <h2>
-                          <i class="fa fa-database"></i> Taluka Master</h2>
+                          <i class="fa fa-database"></i> State Master</h2>
                   </header>
                   <div>
                       <div class="widget-body">
-                            <form name="accForm" #accForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off" ngNativeValidate>
+                          <form name="stateForm" #stateForm="ngForm"  ngNativeValidate>
                               <div class="row">
                                 <div class="col-sm-6">
-                                  <div class="form-group">
-                                    <label for="sel1">District <span class="errorMessage">*</span>
-                                    </label>
-                                    <select class="form-control" saCommonDir required>
-                                      <option value="" selected hidden> Select District </option>
-                                      <option value="KH">Kolhapur</option>
-                                    </select>
+                                    <div class="form-group">
+                                      <label for="sel1">Country <span class="errorMessage">*</span>
+                                      </label>
+                                      <select class="form-control" saCommonDir required>
+                                        <option value="" selected hidden> Select Country </option>
+                                        <option value="MH">Maharashtra</option>
+                                      </select>
+                                    </div>
                                   </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>State Code<span class="errorMessage">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Enter State Code "saCommonDir
+                                            dirType="alphanumeric" required />
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                   <div class="form-group">
-                                      <label>Taluka <span class="errorMessage">*</span>
+                                      <label>State <span class="errorMessage">*</span>
                                       </label>
-                                      <input type="text" class="form-control"  [(ngModel)]="item.Name" name="TalukaName" placeholder="Enter Taluka Name "saCommonDir
+                                      <input type="text" class="form-control" placeholder="Enter State Name "saCommonDir
                                           dirType="alphaonly" required />
                                   </div>
                               </div>
+                              
+                            
                               </div>
                               <footer>
                                   <div class="row">
                                       <div class="col-sm-12 ">
                                           <hr />
-                                          <a class="pull-right btn btn-default" routerLink="/master/taluka-master">
+                                          <a class="pull-right btn btn-default" routerLink="/master/state-master">
                                               <i class="glyphicon glyphicon-arrow-left"></i> &nbsp;&nbsp;Back </a>
                                           <button class="pull-right btn btn-primary marg-right" type="submit" [disabled]="!loaderbtn">
                                               <i class="fa fa-fw" [ngClass]="{'fa-paper-plane':loaderbtn,'fa-cog fa-spin':!loaderbtn}"></i> {{loaderbtn==true? 'Submit':'Loading'}}</button>

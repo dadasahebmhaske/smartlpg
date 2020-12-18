@@ -13,23 +13,23 @@
                           <form name="districtForm" #districtForm="ngForm"  ngNativeValidate>
                               <div class="row">
                                 <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label for="sel1">State <span class="errorMessage">*</span>
+                                      </label>
+                                      <select class="form-control" saCommonDir required>
+                                        <option value="" selected hidden> Select State </option>
+                                        <option value="MH">Maharashtra</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                <div class="col-sm-6">
                                   <div class="form-group">
                                       <label>District <span class="errorMessage">*</span>
                                       </label>
                                       <input type="text" class="form-control" placeholder="Enter District Name "saCommonDir
-                                          dirType="alphanumeric" required />
+                                          dirType="alphaonly" required />
                                   </div>
                               </div>
-                                <div class="col-sm-6">
-                                  <div class="form-group">
-                                    <label for="sel1">State <span class="errorMessage">*</span>
-                                    </label>
-                                    <select class="form-control" saCommonDir required>
-                                      <option value="" selected hidden> Select State </option>
-                                      <option value="MH">Maharashtra</option>
-                                    </select>
-                                  </div>
-                                </div>
                               </div>
                               <footer>
                                   <div class="row">

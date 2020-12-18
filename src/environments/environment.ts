@@ -28,9 +28,9 @@ export const environment = {
 
 
 
-  BaseUrl: 'http://cms.sipl.pw/api/api/',
-  authKey: 'CMSYS:CMSYS@12345?',
-  secureKey: 'CMSYS11223344556',
+  BaseUrl: 'http://lpg.sipl.pw/lpgapi/api/',
+  authKey: 'smartlpg:@smartlpg#2020?',
+  secureKey: 'SMARTLPG14122020',
   deptId: 1006
 
 

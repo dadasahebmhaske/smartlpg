@@ -16,7 +16,7 @@ import { AllmasterService } from '@app/features/master/allmaster.service';
 
 
 @NgModule({
-  declarations: [componentArray,UigridmasterDirective,],
+  declarations: [componentArray,UigridmasterDirective],
   imports: [
     CommonModule,
     SharedModule,
