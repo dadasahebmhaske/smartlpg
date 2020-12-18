@@ -28,14 +28,14 @@ export const environment = {
 
 
 
-  // BaseUrl: 'http://cms.sipl.pw/api/api/',
+  BaseUrl: 'http://lpg.sipl.pw/lpgapi/api/',
+  authKey: '@smartlpg#2020?',
+  secureKey: 'SMARTLPG14122020',
+  deptId: 1006
+
+  // BaseUrl: 'http://cms.pushpamgroup.co.in/api/api/',
   // authKey: 'CMSYS:CMSYS@12345?',
   // secureKey: 'CMSYS11223344556',
   // deptId: 1006
-
-  BaseUrl: 'http://cms.pushpamgroup.co.in/api/api/',
-  authKey: 'CMSYS:CMSYS@12345?',
-  secureKey: 'CMSYS11223344556',
-  deptId: 1006
 
 };

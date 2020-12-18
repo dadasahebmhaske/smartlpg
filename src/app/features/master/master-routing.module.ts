@@ -44,8 +44,16 @@ import { TalukaMasterComponent } from "./taluka-master/taluka-master.component";
 import { TalukaComponent } from "./taluka/taluka.component";
 import { UnitMasterComponent } from './unit-master/unit-master.component';
 import { UnitComponent } from "./unit/unit.component";
+import { CountryComponent } from "./country/country.component";
+import { CountryMasterComponent } from "./country-master/country-master.component";
+import { StateMasterComponent } from "./state-master/state-master.component";
+import { StateComponent } from "./state/state.component";
 
 const routes: Routes = [
+  { path: 'state-master', component: StateMasterComponent },
+  { path: 'state', component: StateComponent  },
+  { path: 'country-master', component: CountryMasterComponent },
+  { path: 'country', component: CountryComponent  },
   { path: 'department-master', component: DepartmentMasterComponent },
   { path: 'department', component: DepartmentComponent  },
   { path: 'designation-master', component: DesignationMasterComponent  },
@@ -106,6 +114,10 @@ const routes: Routes = [
 export const routing = [RouterModule.forChild(routes)]
 //export class MasterRoutingModule { }
 export const componentArray = [
+  StateMasterComponent,
+  StateComponent,
+  CountryMasterComponent,
+  CountryComponent,
   DepartmentMasterComponent,
   DepartmentComponent,
   DesignationMasterComponent,

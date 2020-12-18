@@ -12,14 +12,6 @@
                       <div class="widget-body">
                           <form name="cityForm" #cityForm="ngForm"  ngNativeValidate>
                               <div class="row">
-                                <div class="col-sm-12">
-                                  <div class="form-group">
-                                      <label>City <span class="errorMessage">*</span>
-                                      </label>
-                                      <input type="text" class="form-control" placeholder="Enter City Name "saCommonDir
-                                          dirType="alphanumeric" required />
-                                  </div>
-                              </div>
                                 <div class="col-sm-6">
                                   <div class="form-group">
                                     <label for="sel1">Taluka <span class="errorMessage">*</span>
@@ -35,9 +27,17 @@
                                       <label>Pin <span class="errorMessage">*</span>
                                       </label>
                                       <input type="text" class="form-control" placeholder="Enter Pin Code "saCommonDir
-                                          dirType="alphanumeric" required />
+                                          dirType="number" required />
                                   </div>
                               </div>
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>City <span class="errorMessage">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter City Name "saCommonDir
+                                        dirType="alphaonly" required />
+                                </div>
+                            </div>
                               </div>
                               <footer>
                                   <div class="row">

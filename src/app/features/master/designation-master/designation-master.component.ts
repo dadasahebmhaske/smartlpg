@@ -34,7 +34,7 @@ export class DesignationMasterComponent implements OnInit {
             headerCellTemplate: '<div style="text-align: center;margin-top: 30px;">Edit</div>', enableFiltering: false
           },
          // { name: 'DesigId', displayName: 'Designation Id', width: "*", cellTooltip: true, filterCellFiltered: true },
-          { name: 'DesigName', displayName: 'Designation', width: "*", cellTooltip: true, filterCellFiltered: true },
+          { name: 'Designation', displayName: 'Designation Name', width: "*", cellTooltip: true, filterCellFiltered: true },
           { name: 'IsActive', displayName: 'Active', cellClass: 'cell-center', width: "*", cellTooltip: true, filterCellFiltered: true },
         ]
         this.gridOptions.columnDefs = columnDefs;

@@ -15,9 +15,9 @@ export const environment = {
     db: 'smartadmin-angular'
   },
  
-  BaseUrl: 'http://cms.pushpamgroup.co.in/api/api/',
-  authKey: 'CMSYS:CMSYS@12345?',
-  secureKey: 'CMSYS11223344556',
+  BaseUrl: 'http://lpg.sipl.pw/lpgapi/',
+  authKey: '@smartlpg#2020?',
+  secureKey: 'SMARTLPG14122020',
   deptId: 1006
 
 
