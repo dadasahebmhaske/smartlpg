@@ -7,6 +7,7 @@ import { DistributorAuthentificationComponent } from './distributor-authentifica
 import { DistributorProfileComponent } from './distributor-profile/distributor-profile.component';
 import { CreateAdministratorAccountComponent } from './create-administrator-account/create-administrator-account.component';
 
+
 @NgModule({
   imports: [
     CommonModule,

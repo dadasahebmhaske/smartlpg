@@ -15,7 +15,7 @@ export class AuthService {
   user =  new BehaviorSubject<User>(null);
   constructor(private appserive:AppService,private httpClient:HttpClient) { }
   logIn(loginData) {
-    return this.httpClient.post<any>(`${AppComponent.BaseUrl}Authentication/GetEmpLogin`, {data: loginData}).pipe(catchError(errorRes=>{
+    return this.httpClient.post<any>(`${AppComponent.BaseUrl}Authentication/UserLogin`, {data: loginData},AppComponent.httpOptions).pipe(catchError(errorRes=>{
           let errorMessage="An error Occured";
           if(!errorRes.error || errorRes.error.message){
             return throwError(errorMessage);
@@ -49,5 +49,14 @@ isAccessIn(formFlag){
   } 
 }
 
+Forgot(uri,data:any){
+  return this.httpClient.post<any>(`${AppComponent.BaseUrl}Authentication/${uri}`, { data: data }, 
+  AppComponent.httpOptions);
+}
+
+Reset(uri,data:any){
+  return this.httpClient.post<any>(`${AppComponent.BaseUrl}Master/${uri}`,{ data: data }, 
+  AppComponent.httpOptions);
+}
 
 }

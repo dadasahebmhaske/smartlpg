@@ -18,18 +18,18 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.appService.getAppData().subscribe(data => {
       this.CPSD = data; 
-      this.getNavMenu();
+      //this.getNavMenu();
     });
   }
-getNavMenu(){
-  let menu=this.CPSD.Menu;
-  menu.forEach(element => {
-    if($("[formflag="+ element +"]").length > 0){
-      $("[formflag="+ element +"]").show();
-    }else{
-      $("[formflag="+ element +"]").hide();
-    }
-  });
+// getNavMenu(){
+//   let menu=this.CPSD.Menu;
+//   menu.forEach(element => {
+//     if($("[formflag="+ element +"]").length > 0){
+//       $("[formflag="+ element +"]").show();
+//     }else{
+//       $("[formflag="+ element +"]").hide();
+//     }
+//   });
 
 
   // this.masterService.getNavMenu(this.CPSD.RoleCode,this.CPSD.RoleId).subscribe((resData: any) => {
@@ -47,5 +47,5 @@ getNavMenu(){
   //   }
   // });
  
-}
+//}
 }

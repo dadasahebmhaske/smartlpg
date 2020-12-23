@@ -45,7 +45,7 @@ export class DesignationMasterComponent implements OnInit {
         AppComponent.Router.navigate(['/master/designation']);
       }
       onLoad() {
-        this.allmasterService.getDesignation('').subscribe((resData: any) => {
+        this.allmasterService.getDesignation().subscribe((resData: any) => {
           if (resData.StatusCode != 0) {
             this.designationData = resData.Data; console.log(resData.Data);
             AppComponent.SmartAlert.Success(resData.Message);

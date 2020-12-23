@@ -31,21 +31,21 @@ export class UserMasterComponent implements OnInit {
     this.gridOptions.exporterExcelFilename = 'User List.xlsx';
     let columnDefs = [];
     columnDefs = [
-      // {
-      //   name: 'Select', displayName: 'Details', cellTemplate: '<button  style="margin:3px;" class="btn-primary btn-xs"  ng-click="grid.appScope.editEmployee(row.entity)"  ng-if="row.entity.IsActive!=null">&nbsp;Edit&nbsp;</button> '
-      //   , width: "48", exporterSuppressExport: true,
-      //   headerCellTemplate: '<div style="text-align: center;margin-top: 30px;">Edit</div>', enableFiltering: false
-      // },
       {
-        name: 'Edit', displayName: 'Edit', 
-        cellTemplate: `<button ng-if="row.entity.IsActive=='Y'" class="btn-primary btn-xs" style="margin:2px 11px;" ng-click="grid.appScope.editEmployee(row.entity)" data-title=""><i class="fa fa-pencil-square-o"></i></button>`
-      , width: '48', headerCellTemplate: '<div style="text-align: center;margin-top: 22px;"></div>', enableFiltering: false 
+        name: 'Select', displayName: 'Details', cellTemplate: '<button  style="margin:3px;" class="btn-primary btn-xs"  ng-click="grid.appScope.editEmployee(row.entity)"  ng-if="row.entity.IsActive!=null">&nbsp;Edit&nbsp;</button> '
+        , width: "48", exporterSuppressExport: true,
+        headerCellTemplate: '<div style="text-align: center;margin-top: 30px;">Edit</div>', enableFiltering: false
       },
-      { name: 'DesigName', displayName: 'Designation', width: "*", cellTooltip: true, filterCellFiltered: true },
+      // {
+      //   name: 'Edit', displayName: 'Edit', 
+      //   cellTemplate: `<button ng-if="row.entity.IsActive=='Y'" class="btn-primary btn-xs" style="margin:2px 11px;" ng-click="grid.appScope.editEmployee(row.entity)" data-title=""><i class="fa fa-pencil-square-o"></i></button>`
+      // , width: '48', headerCellTemplate: '<div style="text-align: center;margin-top: 22px;"></div>', enableFiltering: false 
+      // },
+      { name: 'Designation', displayName: 'Designation', width: "*", cellTooltip: true, filterCellFiltered: true },
       { name: 'FirstName', displayName: 'First Name', width: "*", cellTooltip: true, filterCellFiltered: true },
       { name: 'LastName', displayName: 'Last Name', width: "*", cellTooltip: true, filterCellFiltered: true },
-      { name: 'MobileNo', displayName: 'Mobile Number', cellClass: 'cell-right', width: "*", cellTooltip: true, filterCellFiltered: true },
-      { name: 'EmailId', displayName: 'Email Id', width: "*", cellTooltip: true, filterCellFiltered: true },
+      { name: 'Mobile', displayName: 'Mobile Number', cellClass: 'cell-right', width: "*", cellTooltip: true, filterCellFiltered: true },
+      { name: 'Email', displayName: 'Email Id', width: "*", cellTooltip: true, filterCellFiltered: true },
       // { name: 'AltMobileNo', displayName: 'Altr Mobile No.', cellClass: 'cell-center', width: "120", cellTooltip: true, filterCellFiltered: true },
       // { name: 'BloodGroup', displayName: 'Blood Group', width: "120", cellTooltip: true, filterCellFiltered: true },
       // { name: 'Education', displayName: 'Qualification', width: "130", cellTooltip: true, filterCellFiltered: true },
@@ -62,7 +62,7 @@ export class UserMasterComponent implements OnInit {
 
   onLoad() {
     this.loaderbtn=false;
-    this.allmasterService.getEmployees('').subscribe((resData: any) => {
+    this.allmasterService.getUsers().subscribe((resData: any) => {
       this.loaderbtn=true;
       if (resData.StatusCode != 0) {
         this.userData = resData.Data;  console.log(resData.Data);
@@ -72,14 +72,16 @@ export class UserMasterComponent implements OnInit {
       else { AppComponent.SmartAlert.Errmsg(resData.Message); this.userData = [{}]; }
     });
   }
-
-  onSelectDesignation() {
-    this.loaderbtn=false;
-      //this.userData = this.masterService.filterData(this.userDataStored, this.designation, 'RoleCode');
-      //this.userData = this.designation == 'ALL' ? this.userDataStored : this.userData;
-    if (this.userData.length == 0)
-     { this.userData = [{}]; AppComponent.SmartAlert.Errmsg('No Records Found');}
-      this.loaderbtn=true;
-    }
+  // ngOnDestroy() {
+  //   this.datashare.updateShareData(null);
+  // }
+  // onSelectDesignation() {
+  //   this.loaderbtn=false;
+  //     //this.userData = this.masterService.filterData(this.userDataStored, this.designation, 'RoleCode');
+  //     //this.userData = this.designation == 'ALL' ? this.userDataStored : this.userData;
+  //   if (this.userData.length == 0)
+  //    { this.userData = [{}]; AppComponent.SmartAlert.Errmsg('No Records Found');}
+  //     this.loaderbtn=true;
+  //   }
 
 }

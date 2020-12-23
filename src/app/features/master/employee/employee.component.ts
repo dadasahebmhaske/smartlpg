@@ -59,12 +59,12 @@ public maxDate:Date=new Date();
       }
       else { this.DeptData = []; AppComponent.SmartAlert.Errmsg(resDat.Message); }
     });
-    this.allmasterService.getDesignation('Y').subscribe((resD: any) => {
-      if (resD.StatusCode != 0) {
-        this.designationData = resD.Data;
-      }
-      else { this.designationData = []; AppComponent.SmartAlert.Errmsg(resD.Message); }
-    });
+    // this.allmasterService.getDesignation('Y').subscribe((resD: any) => {
+    //   if (resD.StatusCode != 0) {
+    //     this.designationData = resD.Data;
+    //   }
+    //   else { this.designationData = []; AppComponent.SmartAlert.Errmsg(resD.Message); }
+    // });
   }
   onSubmit() {
     this.loaderbtn = false;

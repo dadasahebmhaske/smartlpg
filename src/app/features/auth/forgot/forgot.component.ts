@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { AppService } from '@app/core/custom-services/app.service';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { AppComponent } from '@app/app.component';
 
 @Component({
   selector: 'app-forgot',
@@ -32,13 +36,23 @@ export class ForgotComponent implements OnInit {
       }
     }
   };
-  constructor(private router: Router) { }
+  constructor(private router: Router,private appService:AppService,private authservice:AuthService) { }
 
   ngOnInit() {
   }
 
-  submit(event){
+  submit(event,form:NgForm){
     event.preventDefault();
-    this.router.navigate(['/dashboard/+analytics'])
+    if(!form.valid){
+      return;
+    }
+    let ciphertext = this.appService.getEncrypted(form.value);
+    this.authservice.Forgot('UserForgotPassword',ciphertext).subscribe((resData: any) => {
+    if(resData.StatusCode==1) {   
+      AppComponent.SmartAlert.Success(resData.Message);  
+      this.router.navigate(['/auth/login']);
+    }
+  });
   }
+  
 }

@@ -10,8 +10,18 @@ export class AllmasterService {
   public getmasterData(MasterCode, IsActive) {
     return this.httpClient.get<any>(`${AppComponent.BaseUrl}Master/GetMasterRecords?MasterCode=${MasterCode}&StartDate=&EndDate=&UserCode=&IsActive=${IsActive}`);
   }
+
+  getDesignation(){
+    return this.httpClient.get<any>(`${AppComponent.BaseUrl}Master/GetDesignation?DesignationID&IsActive`
+    ,AppComponent.httpOptions);
+  }
+
+  getUsers(){
+    return this.httpClient.get<any>(`${AppComponent.BaseUrl}Master/GetUser?UserID&Email&Mobile&IsActive=Y`
+    ,AppComponent.httpOptions);
+  }
   public getDepartment(IsActive) { return this.getmasterData(101, IsActive); }
-  public getDesignation(IsActive) { return this.getmasterData(102, IsActive); }
+  //public getDesignation(IsActive) { return this.getmasterData(102, IsActive); }
   public getEmployees(IsActive) { return this.getmasterData(103, IsActive); }
   public getSite(IsActive) { return this.getmasterData(104, IsActive); }
   public getProject(IsActive) { return this.getmasterData(105, IsActive); }

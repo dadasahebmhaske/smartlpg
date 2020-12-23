@@ -20,10 +20,10 @@ export class DesignationComponent implements OnInit, OnDestroy {
       }
       public onSubmit() {
         this.loaderbtn = false;
-        this.desig.Flag = this.desig.UserCode == null ? 'IN' : 'UP';
+        this.desig.Flag = this.desig.DesignationID == null ? 'IN' : 'UP';
         //this.desig.DesigId = this.desig.DesigId == null ? '' : this.desig.DesigId;
         this.desig.IsActive = 'Y';
-        this.desig.UserCode = '1';
+        this.desig.UserCode = this.empInfo.UserID;
         let ciphertext = this.appService.getEncrypted(this.desig);
         this.allmasterService.post('ManageDesignation',ciphertext).subscribe((resData: any) => {
           this.loaderbtn = true;

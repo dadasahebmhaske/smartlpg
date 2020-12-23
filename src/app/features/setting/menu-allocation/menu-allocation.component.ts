@@ -25,16 +25,16 @@ export class MenuAllocationComponent implements OnInit {
   ngOnInit() {
     this.appService.getAppData().subscribe(data => { this.empInfo = data });
     this.configureGrid();
-    this.allOnloadMethods();
+    //this.allOnloadMethods();
   }
-  allOnloadMethods() {
-        this.allmasterService.getDesignation('Y').subscribe((resD: any) => {
-      if (resD.StatusCode != 0) {
-        this.designationData = resD.Data;
-      }
-      else { this.designationData = []; AppComponent.SmartAlert.Errmsg(resD.Message); }
-    });
-  }
+  // allOnloadMethods() {
+  //       this.allmasterService.getDesignation('Y').subscribe((resD: any) => {
+  //     if (resD.StatusCode != 0) {
+  //       this.designationData = resD.Data;
+  //     }
+  //     else { this.designationData = []; AppComponent.SmartAlert.Errmsg(resD.Message); }
+  //   });
+  // }
   configureGrid() {
     this.gridOptions = <IGridoption>{}
     this.gridOptions.exporterMenuPdf = false;

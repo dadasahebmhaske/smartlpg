@@ -32,11 +32,11 @@
           <img src="assets/img/avatars/sunny.png" alt="John Doe" class="online"/>
         </a>
         <ul class="dropdown-menu pull-right">
-          <!-- <li>
-            <a (click)="(null)" class="padding-10 padding-top-0 padding-bottom-0"><i
+          <li>
+            <a (click)="ChangePass()"class="padding-10 padding-top-0 padding-bottom-0"><i
               class="fa fa-cog"></i> Setting</a>
           </li> 
-          <li class="divider"></li>-->
+          <li class="divider"></li>
           <!-- <li>
             <a routerLink="/app-views/profile" class="padding-10 padding-top-5 padding-bottom-5"> <i
               class="fa fa-user"></i>&nbsp;
@@ -48,11 +48,11 @@
                data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
           </li>
           <li class="divider"></li> -->
-          <li>
-            <a routerLink="/settings/change-password" (click)="ChangePass()" class="padding-10 padding-top-5 padding-bottom-5"
-               ><i class="fa fa-lock"></i>  &nbsp;Change Passwod</a>
+          <!-- <li>
+            <a routerLink="/setting/change-password"  class="padding-10 padding-top-5 padding-bottom-5" >
+              <i class="fa fa-lock"></i>  &nbsp;Change Passwod</a>
           </li>
-          <!-- <li class="divider"></li> -->
+          <li class="divider"></li> -->
           <li>
             <a routerLink="/auth/login" (click)="logout()" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i
               class="fa fa-sign-out fa-lg"></i> <strong>&nbsp;Logout</strong></a>

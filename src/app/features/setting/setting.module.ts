@@ -9,6 +9,7 @@ import { AllmasterService } from '../master/allmaster.service';
 import { routing,componentArray } from './setting-routing.module';
 import { SettingService } from '../setting/setting.service';
 import { UigridsettingDirective } from '../../core/directive/uigridsetting.directive';
+
 @NgModule({
   declarations: [componentArray,UigridsettingDirective],
   imports: [

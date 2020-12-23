@@ -37,19 +37,20 @@
       </div>
       <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
         <div class="well no-padding">
-          <form id="login-form" class="smart-form client-form">
+          <form id="login-form" class="smart-form client-form" name="forgotForm" #forgotForm="ngForm" 
+          (click)="submit($event,forgotForm)" ngNativeValidate>
             <header> Forgot Password </header>
             <fieldset>
-              <section>
+              <!-- <section>
                 <label class="label">User Code</label>
                 <label class="input"> <i class="icon-append fa fa-user"></i>
                   <input type="text" name="Dist Code">
                 </label>
-              </section>
+              </section> -->
               <section>
                 <label class="label">Registered E-mail ID</label>
                 <label class="input"> <i class="icon-append fa fa-envelope"></i>
-                  <input type="email" name="email">
+                  <input type="email" name="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ngModel email required>
                 </label>
                 <div class="note">
                   <a routerLink="/auth/login">I remembered my password!</a>
@@ -60,7 +61,7 @@
               </span></section> -->
             </fieldset>
             <footer>
-              <button (click)="submit($event)" class="btn btn-primary">
+              <button  class="btn btn-primary">
                 <i class="fa fa-refresh"></i> Send Password </button>
             </footer>
           </form>

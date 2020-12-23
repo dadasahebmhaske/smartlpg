@@ -41,8 +41,9 @@
               <section>
                 <label class="label">E-mail ID</label>
                 <label class="input"> <i class="icon-append fa fa-envelope"></i>
-                  <input type="email" name="EmailId" data-smart-validate-input="" data-required="" data-email="" data-message-required="Please enter your email address"
-                    data-message-email="Please enter a VALID email address" ngModel minlength="6" autocomplete="on" email >
+                  <input type="email" name="Email"  data-smart-validate-input="" data-required="" data-email="" data-message-required="Please enter your email address"
+                    data-message-email="Please enter a VALID email address"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ngModel minlength="6" autocomplete="on" email >
                 </label>
               </section>
               <section>
@@ -65,9 +66,9 @@
               <!-- <button  class="btn btn-primary">
                 Sign in
               </button> -->
-           <a routerLink="/dashboard">  <button class="btn btn-primary" type="submit" [disabled]="!loaderbtn">
+            <button class="btn btn-primary" type="submit" [disabled]="!loaderbtn">
                 <i class="fa fa-fw" [ngClass]="{'fa-cog fa-spin':!loaderbtn}" *ngIf="!loaderbtn"></i> {{loaderbtn==true? 'Sign In':'Loading'}}</button>
-              </a>   </footer>
+                 </footer>
           </form>
         </div>
         <!-- <h5 class="text-center"> - Or sign in using -</h5>

@@ -45,40 +45,40 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   login(event,form:NgForm){
-    this.router.navigate(['/dashboard']); 
-    // this.loaderbtn=false;
-    // event.preventDefault();
-    // if(!form.valid){
-    //   return;
-    // }
+    //this.router.navigate(['/dashboard']); 
+    this.loaderbtn=false;
+    event.preventDefault();
+    if(!form.valid){
+      return;
+    }
     // form.value.AppFlag='AD'
     // form.value.IsActive='Y';
-    // let ciphertext = this.appService.getEncrypted(form.value);
-    // this.authservice.logIn(ciphertext).subscribe(resData=>{
-    //   this.loaderbtn=true;
-    // if(resData.StatusCode==1) {     
-    //   this.EmpInfo= resData.Data[0];
+    let ciphertext = this.appService.getEncrypted(form.value);
+    this.authservice.logIn(ciphertext).subscribe((resData: any) => {
+      this.loaderbtn=true;
+    if(resData.StatusCode==1) {     
+      this.EmpInfo= resData.Data[0];
     // /// this.getNavMenu();
-    //   this.appService.doEncryptionOf(resData.Data[0]);
-    //      console.log(resData); 
-    //     AppComponent.SmartAlert.bigBox({
-    //       title: `Welcome  ${resData.Data[0].FirstName} ${resData.Data[0].LastName}`,
-    //       content: "Logged in successfully!",
-    //       color: "#296191",
-    //       icon: "fa fa-thumbs-up animated bounce ",
-    //       number: "1",
-    //       timeout: 6000
-    //     });
-    //  //  this.router.navigate(['/dashboard']); 
-    //     }
-    //      else{
-    //        AppComponent.SmartAlert.Errmsg(resData.Message);
-    //      }
-    //      },errorMessage=>{
-    //     console.log(errorMessage);
+      this.appService.doEncryptionOf(resData.Data[0]);
+         console.log(resData); 
+        AppComponent.SmartAlert.bigBox({
+          title: `Welcome  ${resData.Data[0].FirstName} ${resData.Data[0].LastName}`,
+          content: "Logged in successfully!",
+          color: "#296191",
+          icon: "fa fa-thumbs-up animated bounce ",
+          number: "1",
+          timeout: 6000
+        });
+       this.router.navigate(['/dashboard']); 
+        }
+         else{
+           AppComponent.SmartAlert.Errmsg(resData.Message);
+         }
+         },errorMessage=>{
+        console.log(errorMessage);
      
-    //   }
-    //   );
+      }
+      );
   }
   getNavMenu(){
     let menu=[];

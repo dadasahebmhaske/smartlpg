@@ -47,7 +47,12 @@ const routes: Routes = [
        // canActivate: [AuthenticationGuard],
         data: { pageTitle: "Dashboard" }
       },
-
+      {
+        path: "setting",
+        loadChildren: "./features/setting/setting.module#SettingModule",
+        // canActivate: [AuthenticationGuard],
+        data: { pageTitle: "setting" }
+      },
       {
         path: "e-commerce",
         loadChildren: "./features/e-commerce/e-commerce.module#ECommerceModule",

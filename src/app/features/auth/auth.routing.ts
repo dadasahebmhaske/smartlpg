@@ -6,6 +6,7 @@ import { DistributorProfileComponent } from './distributor-profile/distributor-p
 import { CreateAdministratorAccountComponent } from './create-administrator-account/create-administrator-account.component';
 
 
+
 export const routes:Routes = [
   {
     path: 'login',
@@ -34,7 +35,11 @@ export const routes:Routes = [
   {
     path: 'create-administrator-account',
     component: CreateAdministratorAccountComponent
-  }
+  },
+  {
+    path: 'reset-password',
+    loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+  },
 ];   
 
 export const routing = RouterModule.forChild(routes);

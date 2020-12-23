@@ -9,6 +9,7 @@ import { SubmenuL3ListComponent } from "./submenu-l3-list/submenu-l3-list.compon
 import { SubmenuL3Component } from "./submenu-l3/submenu-l3.component";
 import { MenuAllocationComponent } from "./menu-allocation/menu-allocation.component";
 import { MenuAllocationDetailsComponent } from "./menu-allocation-details/menu-allocation-details.component";
+import { ChangePasswordComponent } from "./change-password/change-password.component";
 
 const routes: Routes = [
   { path: 'mainmenu-list', component: MainmenuListComponent, canActivate: [RoleAccessGuard],data: {formFlag: ['SMML1']} },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'submenuL3', component: SubmenuL3Component , canActivate: [RoleAccessGuard],data: {formFlag: ['SSML3']} },
   { path: 'menu-allocation', component: MenuAllocationComponent , canActivate: [RoleAccessGuard],data: {formFlag: ['SMALL']}},
   { path: 'menu-allocation-details', component: MenuAllocationDetailsComponent , canActivate: [RoleAccessGuard],data: {formFlag: ['SMALL']}}, 
- 
+  { path: 'change-password', component: ChangePasswordComponent}
 ];
 
 export const routing = [RouterModule.forChild(routes)]
@@ -32,5 +33,6 @@ export const componentArray = [
   SubmenuL3ListComponent,
   SubmenuL3Component,
   MenuAllocationComponent,
-  MenuAllocationDetailsComponent
+  MenuAllocationDetailsComponent,
+  ChangePasswordComponent
 ];

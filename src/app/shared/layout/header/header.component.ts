@@ -4,6 +4,8 @@ import { Store } from "@ngrx/store";
 import { getUser, AuthState } from './../../../core/store/auth';
 import { pipe } from 'rxjs';
 import { AppService } from '@app/core/custom-services/app.service';
+import { HttpClient } from '@angular/common/http';
+import { AppComponent } from '@app/app.component';
 
 
 declare var $: any;
@@ -28,16 +30,17 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
   public cpInfo: any;
-  constructor(private router: Router, private appService: AppService) {
+  public user:any={};
+  constructor(private router: Router, private appService: AppService,private httpClient: HttpClient) {
   }
 
   ngOnInit() {
-    this.appService.getAppData().subscribe(data => {
-      this.cpInfo = data;
-      if (this.cpInfo == null) {
-        this.cpInfo.CPName = '';
-        this.cpInfo.CPCode = '';
-      }
+     this.appService.getAppData().subscribe(data => {
+      //  this.cpInfo = data;
+      // if (this.cpInfo == null) {
+      //   this.cpInfo.CPName = '';
+      //   this.cpInfo.CPCode = '';
+     // }
     });
   }
 
@@ -55,11 +58,20 @@ export class HeaderComponent implements OnInit {
 
   }
   logout() {
-    localStorage.clear();
-    this.appService.setProperty(null, false);
+     localStorage.clear();
+     this.appService.setProperty(null, false);
+    // this.user.UserID = this.cpInfo.UserID;
+    // this.user.Email = this.cpInfo.Email;
+    // let ciphertext = this.appService.getEncrypted(this.user);
+    // this.httpClient.post(AppComponent.BaseUrl+'Authentication/UserLogout',ciphertext,AppComponent.httpOptions).subscribe((resData: any) => {
+    //   if (resData.StatusCode != 0) {
+    //     AppComponent.SmartAlert.Success(resData.Message);
+    //     AppComponent.Router.navigate(['/auth/login']);
+    //   }
+    // })
     this.router.navigate(['/auth/login']);
   }
   ChangePass(){
-    this.router.navigate(['/settings/change-password']);
+    this.router.navigate(['/setting/change-password']);
   }
 }
